@@ -21,13 +21,16 @@ function preload(){
   
 }
 
+let bird = null;
+
 //Initializae instances of application
 function create(){
   //x e y da imagem ficam centralizados no canto superior esquerdo
   // this.add.image(config.width / 2 , config.height / 2, 'sky').setOrigin(0,0);
-  // this.add.image(0, 0, 'sky').setOrigin(0,0);
+  this.add.image(0, 0, 'sky').setOrigin(0,0);
   // this.add.image(0, 0, 'sky').setOrigin(0.9,0);
-  this.add.image(config.width / 2 , config.height / 2, 'sky').setOrigin(1,0);
+  // this.add.image(config.width / 2 , config.height / 2, 'sky').setOrigin(1,0);
+  bird = this.add.sprite(config.width * 0.1, config.height/2, 'bird').setOrigin(0);
 
 }
 
