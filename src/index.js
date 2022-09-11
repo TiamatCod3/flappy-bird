@@ -9,7 +9,8 @@ const config = {
   },
   scene: {
     preload,
-    create
+    create,
+    update
   }
 }
 
@@ -30,8 +31,17 @@ function create(){
   this.add.image(0, 0, 'sky').setOrigin(0,0);
   // this.add.image(0, 0, 'sky').setOrigin(0.9,0);
   // this.add.image(config.width / 2 , config.height / 2, 'sky').setOrigin(1,0);
-  bird = this.add.sprite(config.width * 0.1, config.height/2, 'bird').setOrigin(0);
+  // Phisics addition
+  bird = this.physics.add.sprite(config.width * 0.1, config.height/2, 'bird').setOrigin(0);
 
+  bird.body.gravity.y = 100;
+}
+
+//time is the time passed since game initilize
+//delta is the time between frames
+//By default it is setted to 60fps and delta of 16.6ms
+function update(time, delat){
+  console.log(bird.body.velocity.y);
 }
 
 new Phaser.Game(config);
