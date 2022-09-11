@@ -5,7 +5,10 @@ const config = {
   width: 800,
   height: 600,
   physics:{
-    default: 'arcade'
+    default: 'arcade',
+    arcade:{
+      gravity: {y: 200}
+    }
   },
   scene: {
     preload,
@@ -23,6 +26,7 @@ function preload(){
 }
 
 let bird = null;
+let totalDelta = null;
 
 //Initializae instances of application
 function create(){
@@ -34,14 +38,18 @@ function create(){
   // Phisics addition
   bird = this.physics.add.sprite(config.width * 0.1, config.height/2, 'bird').setOrigin(0);
 
-  bird.body.gravity.y = 100;
+  // bird.body.gravity.y = 100;
 }
+
 
 //time is the time passed since game initilize
 //delta is the time between frames
 //By default it is setted to 60fps and delta of 16.6ms
-function update(time, delat){
-  console.log(bird.body.velocity.y);
+function update(time, delta){
+  totalDelta += delta;
+  if (totalDelta < 1000){return;}
+  console.log(bird.body.velocity.y)
+  totalDelta = 0;
 }
 
 new Phaser.Game(config);
